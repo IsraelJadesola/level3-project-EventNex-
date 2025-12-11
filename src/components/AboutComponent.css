@@ -1,0 +1,281 @@
+.about-section {
+  padding: 70px 0 0 0;
+  background: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-main-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #d19d50;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.about-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.about-images-column {
+  flex: 1;
+  position: relative;
+  height: 650px;
+}
+
+.image-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.about-image-main {
+  width: 85%;
+  height: 300px;
+  border-radius: 15px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 2px solid white;
+  transform: translate(0, 0);
+}
+
+.about-image-secondary {
+  width: 80%;
+  height: 350px;
+  border-radius: 15px;
+  object-fit: cover;
+  position: absolute;
+  top: 10%;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border: 2px solid white;
+  transform: translate(0, 0);
+}
+
+
+.about-text-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.about-text-content {
+  width: 100%;
+  text-align: center;
+}
+
+.about-text-content h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #d19d50;
+  margin-bottom: 25px;
+  line-height: 1.3;
+}
+
+.about-text-content p {
+  font-size: 1.2rem;
+  color: #dcdee1;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.about-text-content p:first-of-type {
+  font-size: 1.3rem;
+  color: #dcdee1;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .about-content-wrapper {
+    gap: 50px;
+  }
+
+  .about-images-column {
+    height: 600px;
+  }
+
+  .about-image-main {
+    height: 450px;
+  }
+
+  .about-image-secondary {
+    height: 400px;
+  }
+
+  .about-title {
+    font-size: 3.5rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-text-content p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-section {
+    padding: 80px 0;
+  }
+
+  .about-content-wrapper {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .about-images-column {
+    width: 100%;
+    height: auto;
+    order: 1;
+  }
+
+  .image-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .about-image-main {
+    position: static;
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+    transform: none;
+    top: auto;
+    left: auto;
+  }
+
+  .about-image-secondary {
+    position: static;
+    width: 70%;
+    height: 350px;
+    margin: 0 auto;
+    transform: none;
+    top: auto;
+    right: auto;
+    bottom: auto;
+  }
+
+  .about-text-column {
+    width: 100%;
+    order: 2;
+    align-items: flex-start;
+  }
+
+  .about-title {
+    font-size: 3rem;
+  }
+
+  .about-text-content h2 {
+    text-align: left;
+    font-size: 2.2rem;
+  }
+
+  .about-text-content p {
+    text-align: left;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-images-column {
+    height: auto;
+  }
+
+  .image-grid {
+    gap: 25px;
+  }
+
+  .about-image-main {
+    width: 85%;
+    height: 350px;
+    border-width: 6px;
+  }
+
+  .about-image-secondary {
+    width: 75%;
+    height: 300px;
+    border-width: 6px;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 2rem;
+  }
+
+  .about-text-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .about-images-column {
+    height: auto;
+  }
+
+  .image-grid {
+    gap: 20px;
+  }
+
+  .about-image-main {
+    width: 90%;
+    height: 300px;
+    border-width: 4px;
+  }
+
+  .about-image-secondary {
+    width: 80%;
+    height: 260px;
+    border-width: 4px;
+  }
+
+  .about-title {
+    font-size: 2.2rem;
+  }
+
+  .about-text-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-text-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}

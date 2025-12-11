@@ -1,0 +1,74 @@
+:root {
+  --background-color: #000000;
+  --text-color-primary: #D19D50;
+  --text-color-secondary: #dcdee1;
+}
+
+.landing-card-section {
+  padding: 10px 20px;
+  background-color: var(--background-color);
+}
+
+.card-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.service-card {
+  flex: 1;
+  max-width: 50%;
+  text-align: center;
+}
+
+.card-icon-container {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.card-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #D19D50;
+  margin-bottom: 15px;
+}
+
+.card-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color-secondary);
+}
+
+
+@media (max-width: 992px) {
+  .card-wrapper {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .service-card {
+    max-width: 100%;
+  }
+
+  .card-title {
+    font-size: 2rem;
+  }
+  
+  .card-description {
+    font-size: 1rem;
+  }
+}
