@@ -1,24 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
 import './Navbar.css'
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false)
     const [activeLink, setActiveLink] = useState('Our Services')
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const isScrolled = window.scrollY > 50
-            if (isScrolled !== scrolled) {
-                setScrolled(isScrolled)
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [scrolled])
 
     const handleNavClick = (linkName) => {
         setActiveLink(linkName)
@@ -26,7 +11,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className={`navbar navbar-expand-lg fixed-top navbar-dark ${scrolled ? 'navbar-scrolled' : ''}`}>
+            <nav className={`navbar navbar-expand-lg fixed-top navbar-dark`}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src={logo} alt="Logo" className='rounded-5' />

@@ -8,7 +8,7 @@ const ServiceCard = ({ icon, title, description }) => {
     return (
         <div className="service-card">
             <div className="card-icon-container">
-                <img src={icon} alt={`${title} Icon`} className="card-icon" />
+                <img src={icon} loading="lazy" alt={`${title} Icon`} className="card-icon" />
             </div>
             <h3 className="card-title">{title}</h3>
             <p className="card-description">{description}</p>
