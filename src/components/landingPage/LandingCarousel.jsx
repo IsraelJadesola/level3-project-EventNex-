@@ -19,22 +19,50 @@ const LandingCarousel = () => {
                     zIndex: 1
                 }}
             >
-
                 <div className="carousel-inner h-100">
                     <div className="carousel-item active h-100">
-                        <img src={image1} loading="lazy" className="d-block w-100 h-100" alt="image1" style={{ objectFit: 'cover' }} />
+                        <img 
+                            src={image1} 
+                            className="d-block w-100 h-100" 
+                            alt="image1" 
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                        />
                     </div>
                     <div className="carousel-item h-100">
-                        <img src={image2} loading="lazy" className="d-block w-100 h-100" alt="image2" style={{ objectFit: 'cover' }} />
+                        <img 
+                            src={image2} 
+                            loading="lazy" 
+                            className="d-block w-100 h-100" 
+                            alt="image2" 
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                        />
                     </div>
                     <div className="carousel-item h-100">
-                        <img src={image3} loading="lazy" className="d-block w-100 h-100" alt="image3" style={{ objectFit: 'cover' }} />
+                        <img 
+                            src={image3} 
+                            loading="lazy" 
+                            className="d-block w-100 h-100" 
+                            alt="image3" 
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                        />
                     </div>
                     <div className="carousel-item h-100">
-                        <img src={image4} loading="lazy" className="d-block w-100 h-100" alt="image4" style={{ objectFit: 'cover' }} />
+                        <img 
+                            src={image4} 
+                            loading="lazy" 
+                            className="d-block w-100 h-100" 
+                            alt="image4" 
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                        />
                     </div>
                     <div className="carousel-item h-100">
-                        <img src={image5} loading="lazy" className="d-block w-100 h-100" alt="image5" style={{ objectFit: 'cover' }} />
+                        <img 
+                            src={image5} 
+                            loading="lazy" 
+                            className="d-block w-100 h-100" 
+                            alt="image5" 
+                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                        />
                     </div>
                 </div>
 
