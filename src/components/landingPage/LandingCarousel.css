@@ -1,120 +1,123 @@
 .carousel-content {
-    position: relative;
+  position: relative;
 }
 
 #carouselExampleAutoplaying {
-    position: relative;
-    z-index: 1;
-    margin-top: 0;
-    height: 100vh;
-    width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  height: 100vh;
+  width: 100%;
 }
 
 .carousel-caption-container {
-    margin-top: 70px; 
+  margin-top: 70px;
 }
 
-
 .carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .carousel-inner h-100 {
-    position: relative;
+  position: relative;
 }
 
 .form-control {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 .form-control:focus {
-    border-color: #ddd !important;
+  border-color: #ddd !important;
 }
 
 .carousel-title {
-    font-size: 5.5rem !important;
-    font-weight: 900 !important;
-    letter-spacing: -0.5px;
-    margin-bottom: 1.5rem !important;
+  font-size: 5.5rem !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem !important;
 }
 
 .carousel-subtitle {
-    font-size: 3rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 1rem !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
 }
 
 .carousel-description {
-    font-size: 1.75rem !important;
-    margin-bottom: 3rem !important;
+  font-size: 1.75rem !important;
+  margin-bottom: 3rem !important;
 }
 
 .sBtn {
-    background-color: #122641;
+  background-color: #122641;
 }
 
 @media (max-width: 1200px) {
-    .carousel-title {
-        font-size: 4.5rem !important;
-    }
-    
-    .carousel-subtitle {
-        font-size: 2.5rem !important;
-    }
-    
-    .carousel-description {
-        font-size: 1.5rem !important;
-    }
-}
+  .carousel-title {
+    font-size: 4.5rem !important;
+  }
 
-@media (max-width: 768px) {
-  .carousel-caption-container {
-    margin-top: 56px; 
+  .carousel-subtitle {
+    font-size: 2.5rem !important;
+  }
+
+  .carousel-description {
+    font-size: 1.5rem !important;
   }
 }
 
 @media (max-width: 768px) {
-    .carousel-title {
-        font-size: 3.5rem !important;
-    }
-    
-    .carousel-subtitle {
-        font-size: 2rem !important;
-    }
-    
-    .carousel-description {
-        font-size: 1.25rem !important;
-    }
-    
-    .bg-white.text-black.p-4.rounded-4 {
-        padding: 1.5rem !important;
-        margin-top: 1rem !important;
-    }
+  .carousel-caption-container {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-title {
+    font-size: 3.5rem !important;
+  }
+
+  .carousel-subtitle {
+    font-size: 2rem !important;
+  }
+
+  .carousel-description {
+    font-size: 1.25rem !important;
+  }
+
+  .bg-white.text-black.p-4.rounded-4 {
+    padding: 1.5rem !important;
+    margin-top: 1rem !important;
+  }
 }
 
 @media (max-width: 576px) {
-    .carousel-title {
-        font-size: 2.8rem !important;
-        margin-top: 2rem !important;
-    }
-    
-    .carousel-subtitle {
-        font-size: 1.6rem !important;
-    }
-    
-    .carousel-description {
-        font-size: 1.1rem !important;
-        margin-bottom: 2rem !important;
-    }
-    
-    .carousel-caption-container {
-        margin-top: 20px;
-    }
+  #carouselExampleAutoplaying {
+    height: 70vh;
+  }
+
+  .carousel-title {
+    font-size: 2.8rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .carousel-subtitle {
+    font-size: 1.6rem !important;
+  }
+
+  .carousel-description {
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .carousel-caption-container {
+    margin-top: 20px;
+  }
 }
