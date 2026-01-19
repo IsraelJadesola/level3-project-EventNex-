@@ -10,9 +10,8 @@ const Footer = () => {
                 <div className="footer-identity-section">
                     <div className="footer-logo-box">
                         <div className="logo-icon-placeholder">
-                            <img src={logo} alt="EventBox Logo" className="logo-img" /> 
+                            <img src={logo} alt="EventBox Logo" className="logo-img" />
                             <span className='fs-3'>&nbsp;&nbsp;EventNex</span>
-
                         </div>
 
                     </div>
