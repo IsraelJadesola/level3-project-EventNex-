@@ -68,9 +68,8 @@ const Navbar = () => {
                             </li>
                         </ul>
                         <div className="d-flex">
-                            <Link to='sig'><button className="btn btn-signup" type="button">Sign Up</button></Link>
-
-                            <button className="btn btn-login" type="button">Login</button>
+                            <Link to='/signup'><button className="btn btn-signup" type="button">Sign Up</button></Link>
+                            <Link to='/signin'><button className="btn btn-login" type="button">Login</button></Link>
                         </div>
                     </div>
                 </div>

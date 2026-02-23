@@ -74,8 +74,8 @@ const LandingCarousel = () => {
                         width: '100%'
                     }}
                 >
-                    <h1 className="carousel-title fw-bold mb-4">Discover Events.</h1>
-                    <p className="carousel-subtitle mb-3">Book Tickets Instantly.</p>
+                    <h1 className="carousel-title fw-bold mb-4">EventNex</h1>
+                    <p className="carousel-subtitle mb-3">Discover Events, book tickets instantly.</p>
                     <p className="carousel-description mb-5">Explore concerts, workshops, conferences & more all in one place</p>
 
                     <div className='bg-white text-black p-4 rounded-4 shadow-lg' style={{ maxWidth: '800px', margin: '0 auto' }}>
