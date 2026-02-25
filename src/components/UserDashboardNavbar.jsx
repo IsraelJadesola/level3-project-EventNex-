@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav className={`navbar navbar-expand-lg fixed-top navbar-dark`}>
+            <nav className={`navbar navbar-dashboard navbar-expand-lg fixed-top navbar-dark`}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src={logo} alt="Logo" className='rounded-5' />

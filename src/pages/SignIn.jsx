@@ -5,6 +5,7 @@ import bigImg from './images/signupimage.jpg'
 import GoogleIcon from './images/google-icon.png';
 import FacebookIcon from './images/facebook-icon.png';
 import TikTokIcon from './images/tiktok-icon.png';
+import Navbar from '../components/Navbar';
 import axios from 'axios'
 
 const SignInForm = () => {
@@ -45,76 +46,78 @@ const SignInForm = () => {
     }
 
     return (
-        <div className="signup-page-container">
-            <div className="signup-image-side">
-                <img
-                    src={bigImg}
-                    alt="Live concert background"
-                    className="signup-background-img"
-                />
-            </div>
+        <Navbar>
+            <div className="signup-page-container">
+                <div className="signup-image-side">
+                    <img
+                        src={bigImg}
+                        alt="Live concert background"
+                        className="signup-background-img"
+                    />
+                </div>
 
-            <div className="signup-form-side">
-                <div className="signup-form-box">
-                    <h1 className="form-title">Login in your Account</h1>
+                <div className="signup-form-side">
+                    <div className="signup-form-box">
+                        <h1 className="form-title">Login in your Account</h1>
 
-                    <form className="signup-form" onSubmit={handleLogin}>
-                        <div className="input-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="Enter Email Address"
-                                className="form-input"
-                                name='email'
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="input-group">
-                            <label htmlFor="password">Password</label>
-                            <div className="password-input-container">
+                        <form className="signup-form" onSubmit={handleLogin}>
+                            <div className="input-group">
+                                <label htmlFor="email">Email</label>
                                 <input
-                                    type={showPassword ? "text" : "password"}
-                                    id="password"
-                                    placeholder="Enter Password"
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter Email Address"
                                     className="form-input"
-                                    name='password'
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    name='email'
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <div
-                                    className="password-toggle-icon"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                >
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                        <circle cx="12" cy="12" r="3"></circle>
-                                    </svg>
+                            </div>
+
+                            <div className="input-group">
+                                <label htmlFor="password">Password</label>
+                                <div className="password-input-container">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        id="password"
+                                        placeholder="Enter Password"
+                                        className="form-input"
+                                        name='password'
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                    <div
+                                        className="password-toggle-icon"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
+
+                            <button type="submit" className="btn-signup-submit">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <div className="divider-container">
+                            <div className="divider-line"></div>
+                            <span className="divider-text">OR</span>
+                            <div className="divider-line"></div>
                         </div>
 
-                        <button type="submit" className="btn-signup-submit">
-                            Sign In
-                        </button>
-                    </form>
+                        <p className="signup-with-text">Sign In With</p>
 
-                    <div className="divider-container">
-                        <div className="divider-line"></div>
-                        <span className="divider-text">OR</span>
-                        <div className="divider-line"></div>
-                    </div>
-
-                    <p className="signup-with-text">Sign In With</p>
-
-                    <div className="social-login-container">
-                        <button className="social-icon-btn">
-                            <img src={GoogleIcon} alt="Google" className="social-icon-img" />
-                        </button>
+                        <div className="social-login-container">
+                            <button className="social-icon-btn">
+                                <img src={GoogleIcon} alt="Google" className="social-icon-img" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Navbar>
     );
 };
 

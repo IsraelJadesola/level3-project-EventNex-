@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import UserDashboardNavbar from '../components/UserDashboardNavbar'
 import MainFooter from '../components/MainFooter'
 import './Dashboard.css'
@@ -10,13 +11,36 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user")
+    const token = localStorage.getItem('User token')
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser))
-    } else {
+    if (!token) {
       navigate('/signin');
+      return
     }
+
+    axios.get("http://localhost:3000/user/dashboard", {
+      headers: { "authorization": token }
+    })
+
+      .then(res => {
+        const storedUser = localStorage.getItem("user")
+        setUser(JSON.parse(storedUser))
+
+        // const timer = setTimeout(() => {
+        //   console.log("Session expired automatically");
+        //   localStorage.removeItem('user');
+        //   localStorage.removeItem('User token');
+        //   navigate("/signin");
+        // }, 100000);
+
+        // return () => clearTimeout(timer)
+
+      }).catch(err => {
+        console.log("Session expired!");
+        localStorage.removeItem('user');
+        localStorage.removeItem('User token');
+        navigate("/signin");
+      });
   }, [navigate]);
 
   if (!user) {

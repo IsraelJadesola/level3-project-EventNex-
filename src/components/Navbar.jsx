@@ -3,7 +3,7 @@ import logo from '../assets/images/logo.png'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
     const [activeLink, setActiveLink] = useState('Our Services')
 
     const handleNavClick = (linkName) => {
@@ -11,12 +11,12 @@ const Navbar = () => {
     }
 
     return (
-        <div>
-            <nav className={`navbar navbar-expand-lg fixed-top navbar-dark`}>
+        <>
+            <nav className={`navbar navbar-landing navbar-expand-lg fixed-top navbar-dark`}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link to="/" className="navbar-brand">
                         <img src={logo} alt="Logo" className='rounded-5' />
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -74,7 +74,8 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-        </div>
+            {children}
+        </>
     )
 }
 

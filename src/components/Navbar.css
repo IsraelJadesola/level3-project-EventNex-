@@ -1,9 +1,10 @@
-.navbar {
-  background-color: transparent !important;
-  backdrop-filter: blur(1px);
+.navbar.navbar-landing {
+  background-color: rgba(18, 38, 65, 0.9) !important;
+  backdrop-filter: blur(10px);
   z-index: 1050 !important;
   padding: 1.2rem 0;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-scrolled {

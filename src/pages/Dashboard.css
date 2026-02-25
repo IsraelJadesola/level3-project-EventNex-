@@ -5,7 +5,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Welcome Section */
 .welcome-section {
   margin-bottom: 50px;
   background: linear-gradient(135deg, #122641 0%, #1a3a52 100%);
@@ -82,7 +81,6 @@
   box-shadow: 0 8px 20px rgba(209, 157, 80, 0.35) !important;
 }
 
-/* Stats Section */
 .stats-section {
   margin-bottom: 50px;
 }
@@ -132,7 +130,6 @@
   color: #122641;
 }
 
-/* Events Section */
 .events-section {
   margin-bottom: 50px;
 }
@@ -263,7 +260,6 @@
   transform: translateX(3px);
 }
 
-/* Categories Section */
 .categories-section {
   margin-bottom: 50px;
 }
@@ -302,7 +298,6 @@
   box-shadow: 0 6px 20px rgba(209, 157, 80, 0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .dashboard-container {
     padding: 90px 15px 50px;
