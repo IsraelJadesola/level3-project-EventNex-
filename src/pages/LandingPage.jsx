@@ -5,7 +5,6 @@ import AboutUs from '../components/AboutComponent'
 import LandingCardComponent1 from '../components/landingPage/LandingCardComponent1'
 import LandingCardComponent2 from '../components/landingPage/LandingCardComponent2'
 import LandingCardComponent3 from '../components/landingPage/LandingCardComponent3'
-import Footer from '../components/MainFooter'
 
 const LandingPage = () => {
     return (
@@ -16,7 +15,6 @@ const LandingPage = () => {
             <LandingCardComponent1/>
             <LandingCardComponent2/>
             <LandingCardComponent3/>
-            <Footer/>
         </>
     )
 }

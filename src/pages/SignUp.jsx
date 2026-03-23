@@ -3,7 +3,6 @@ import './css/SignUp-In.css';
 import bigImg from './images/signupimage.jpg'
 import GoogleIcon from './images/google-icon.png';
 import FacebookIcon from './images/facebook-icon.png';
-import TikTokIcon from './images/tiktok-icon.png';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -20,12 +19,10 @@ const SignUpForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let userData = { firstName, lastName, email, password }
 
         axios.post("http://localhost:3000/user/signup", userData)
-            .then((res) => {
-                console.log('Response:', res.data)
+            .then(() => {
                 alert('signup successfully! please login');
                 navigate("/signin")
             }).catch((err) => {
@@ -35,7 +32,8 @@ const SignUpForm = () => {
     }
 
     return (
-        <Navbar>
+        <>
+            <Navbar />
             <div className="signup-page-container">
                 <div className="signup-image-side">
                     <img
@@ -127,7 +125,7 @@ const SignUpForm = () => {
                     </div>
                 </div>
             </div>
-        </Navbar>
+        </>
     );
 };
 

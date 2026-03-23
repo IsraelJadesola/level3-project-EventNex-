@@ -27,17 +27,17 @@ const LandingCardComponent2 = () => {
                     <div className="stats-column">
                         <div className="stats-row top-stats">
                             <div className="stat-box">
-                                <span className="stat-number">500+</span>
+                                <span className="stat-numbers">500+</span>
                                 <span className="stat-label">Events</span>
                             </div>
                             <div className="stat-box">
-                                <span className="stat-number">100k+</span>
+                                <span className="stat-numbers">100k+</span>
                                 <span className="stat-label">Users</span>
                             </div>
                         </div>
 
                         <div className="stat-box bottom-stat">
-                            <span className="stat-number">100%</span>
+                            <span className="stat-numbers">100%</span>
                             <span className="stat-label">Client satisfaction</span>
                         </div>
                     </div>

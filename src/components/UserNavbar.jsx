@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logo from '../assets/images/logo.png'
-import './UserDashboardNavbar.css'
-import { useNavigate } from 'react-router-dom'
+import './User&AdminNavbar.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const [activeLink, setActiveLink] = useState('Our Services')
@@ -12,8 +12,17 @@ const Navbar = () => {
     const navigate = useNavigate()
 
 
+    const token = localStorage.getItem('User token')
+    const userInfo = JSON.parse(localStorage.getItem('userData'))
+
+    if (!token || !userInfo) {
+        navigate('/signin');
+        return
+    }
+
     const logout = () => {
-        localStorage.removeItem('user')
+        localStorage.removeItem('User token')
+        localStorage.removeItem('userData')
         navigate('/signin')
     }
 
@@ -21,9 +30,9 @@ const Navbar = () => {
         <div>
             <nav className={`navbar navbar-dashboard navbar-expand-lg fixed-top navbar-dark`}>
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link to='/' className="navbar-brand">
                         <img src={logo} alt="Logo" className='rounded-5' />
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -38,40 +47,40 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a
+                                <Link
                                     className={`nav-link ${activeLink === 'Our Services' ? 'active' : ''}`}
-                                    href="#"
+                                    to="/services"
                                     onClick={() => handleNavClick('Our Services')}
                                 >
                                     Our Services
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <Link
                                     className={`nav-link ${activeLink === 'About Us' ? 'active' : ''}`}
-                                    href="#"
+                                    to="/about"
                                     onClick={() => handleNavClick('About Us')}
                                 >
                                     About Us
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <Link
                                     className={`nav-link ${activeLink === 'Contact Us' ? 'active' : ''}`}
-                                    href="#"
+                                    to="/contact"
                                     onClick={() => handleNavClick('Contact Us')}
                                 >
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <Link
                                     className={`nav-link ${activeLink === 'Book a slot' ? 'active' : ''}`}
-                                    href="#"
+                                    to="/dashboard"
                                     onClick={() => handleNavClick('Book a slot')}
                                 >
                                     Book a slot
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         <div className="d-flex">

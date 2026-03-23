@@ -1,103 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
 import image1 from '../../assets/images/bg1.jpg'
-import image2 from '../../assets/images/bg2.jpg'
-import image3 from '../../assets/images/bg3.jpg'
-import image4 from '../../assets/images/bg4.jpg'
-import image5 from '../../assets/images/bg5.jpg'
+import { useNavigate } from 'react-router-dom'
 import './LandingCarousel.css'
 
 const LandingCarousel = () => {
+    const [eventSearch, setEventSearch] = useState('')
+    const [location, setLocation] = useState('')
+    const [date, setDate] = useState('')
+    const navigate = useNavigate()
+
+    const handleSearch = () => {
+        // Build search query parameters
+        const params = new URLSearchParams()
+        if (eventSearch.trim()) params.append('search', eventSearch)
+        if (location.trim()) params.append('location', location)
+        if (date) params.append('date', date)
+
+        // Navigate to dashboard with search filters
+        const queryString = params.toString()
+        navigate(`/dashboard${queryString ? '?' + queryString : ''}`)
+    }
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch()
+        }
+    }
     return (
-        <div className="carousel-content">
+        <div
+            className="carousel-content"
+            style={{
+                height: '100vh',
+                backgroundImage: `url(${image1})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundAttachment: 'fixed',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}
+        >
             <div
-                id="carouselExampleAutoplaying"
-                className="carousel slide carousel-fade"
-                data-bs-ride="carousel"
+                className="text-center text-white carousel-caption-container"
                 style={{
-                    height: '100vh',
-                    position: 'relative',
-                    zIndex: 1
+                    maxWidth: '90%',
+                    width: '100%',
+                    marginTop: '80px'
                 }}
             >
-                <div className="carousel-inner h-100">
-                    <div className="carousel-item active h-100">
-                        <img 
-                            src={image1} 
-                            className="d-block w-100 h-100" 
-                            alt="image1" 
-                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
-                        />
-                    </div>
-                    <div className="carousel-item h-100">
-                        <img 
-                            src={image2} 
-                            loading="lazy" 
-                            className="d-block w-100 h-100" 
-                            alt="image2" 
-                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
-                        />
-                    </div>
-                    <div className="carousel-item h-100">
-                        <img 
-                            src={image3} 
-                            loading="lazy" 
-                            className="d-block w-100 h-100" 
-                            alt="image3" 
-                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
-                        />
-                    </div>
-                    <div className="carousel-item h-100">
-                        <img 
-                            src={image4} 
-                            loading="lazy" 
-                            className="d-block w-100 h-100" 
-                            alt="image4" 
-                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
-                        />
-                    </div>
-                    <div className="carousel-item h-100">
-                        <img 
-                            src={image5} 
-                            loading="lazy" 
-                            className="d-block w-100 h-100" 
-                            alt="image5" 
-                            style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
-                        />
-                    </div>
-                </div>
+                <h1 className="carousel-title fw-bold mb-4 mt-5" st yle={{
+                    color: '#f5d47a',
+                    textShadow: '3px 3px 12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.2)',
+                    fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
+                    whiteSpace: 'nowrap',
+                    display: 'inline-block'
+                }}>EventNex</h1>
+                <p className="carousel-subtitle mb-3" style={{
+                    color: '#FFFFFF',
+                    textShadow: '2px 2px 10px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.7)',
+                    fontSize: 'clamp(1rem, 3vw, 1.3rem)',
+                    fontWeight: '600'
+                }}>Discover Events, book tickets instantly.</p>
+                <p className="carousel-description mb-5" style={{
+                    color: '#FFFFFF',
+                    textShadow: '2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6)',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)'
+                }}>Explore concerts, workshops, conferences & more all in one place</p>
 
-                <div
-                    className="position-absolute top-50 start-50 translate-middle text-center text-white carousel-caption-container"
-                    style={{
-                        zIndex: 2,
-                        maxWidth: '90%',
-                        width: '100%'
-                    }}
-                >
-                    <h1 className="carousel-title fw-bold mb-4">EventNex</h1>
-                    <p className="carousel-subtitle mb-3">Discover Events, book tickets instantly.</p>
-                    <p className="carousel-description mb-5">Explore concerts, workshops, conferences & more all in one place</p>
-
-                    <div className='bg-white text-black p-4 rounded-4 shadow-lg' style={{ maxWidth: '800px', margin: '0 auto' }}>
-                        <div className='row g-2 align-items-center'>
-                            <div className='col-md-3'>
-                                <div className='text-start'>
-                                    <input type='text' className='form-control border-0' placeholder='Search Event' />
-                                </div>
+                <div className='bg-white text-black p-3 p-md-4 rounded-4 shadow-lg' style={{ maxWidth: '800px', margin: '0 auto', width: '95%' }}>
+                    <div className='row g-2 align-items-center'>
+                        <div className='col-12 col-sm-6 col-md-3'>
+                            <div className='text-start'>
+                                <input
+                                    type='text'
+                                    className='form-control border-0'
+                                    placeholder='Search Event'
+                                    value={eventSearch}
+                                    onChange={(e) => setEventSearch(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                />
                             </div>
-                            <div className='col-md-3'>
-                                <div className='text-start'>
-                                    <input type='text' className='form-control border-0' placeholder='Location' />
-                                </div>
+                        </div>
+                        <div className='col-12 col-sm-6 col-md-3'>
+                            <div className='text-start'>
+                                <input
+                                    type='text'
+                                    className='form-control border-0'
+                                    placeholder='Location'
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                />
                             </div>
-                            <div className='col-md-3'>
-                                <div className='text-start'>
-                                    <input type='date' className='form-control border-0' placeholder='Date'/>
-                                </div>
+                        </div>
+                        <div className='col-12 col-sm-6 col-md-3'>
+                            <div className='text-start'>
+                                <input
+                                    type='date'
+                                    className='form-control border-0'
+                                    placeholder='Date'
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                />
                             </div>
-                            <div className='col-md-3'>
-                                <button className='btn btn-dark w-75 px-2 py-2 rounded-4 fs-5 sBtn'>Search</button>
-                            </div>
+                        </div>
+                        <div className='col-12 col-sm-6 col-md-3'>
+                            <button
+                                className='btn btn-dark w-100 w-md-75 px-2 py-2 rounded-4 fs-5 sBtn'
+                                onClick={handleSearch}
+                            >
+                                Search
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,16 @@
+:root {
+	--navbar-offset: 72px; /* adjust if navbar height changes */
+}
+
+body {
+	padding-top: var(--navbar-offset);
+    /* keep the global background neutral; page-specific backgrounds
+       (like the Contact page) should define their own hero layers */
+    background: #ffffff;
+    color: #071428;
+}
+
+body.no-navbar-offset {
+	padding-top: 0;
+}
+

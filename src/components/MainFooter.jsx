@@ -1,5 +1,7 @@
 import React from 'react';
 import './MainFooter.css';
+import { Link } from 'react-router-dom'
+
 
 import logo from '../assets/images/logo.png'
 
@@ -9,10 +11,12 @@ const Footer = () => {
             <div className="footer-main-content">
                 <div className="footer-identity-section">
                     <div className="footer-logo-box">
-                        <div className="logo-icon-placeholder">
-                            <img src={logo} alt="EventBox Logo" className="logo-img" />
-                            <span className='fs-3'>&nbsp;&nbsp;EventNex</span>
-                        </div>
+                        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+                            <div className="logo-icon-placeholder">
+                                <img src={logo} alt="EventBox Logo" className="logo-img" />
+                                <span className='fs-3'>&nbsp;&nbsp;EventNex</span>
+                            </div>
+                        </Link>
 
                     </div>
                     <p className="footer-description">
@@ -33,16 +37,22 @@ const Footer = () => {
                         <h4 className="footer-nav-title">About Us</h4>
                         <ul className="footer-nav-list">
                             <li className="footer-nav-item">
-                                <a href="/careers" className="footer-nav-link">Careers</a>
+                                <Link to="/careers" className="footer-nav-link">Careers</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/terms" className="footer-nav-link">Terms Of Service</a>
+                                <Link to="/terms" className="footer-nav-link">Terms Of Service</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/faqs" className="footer-nav-link">FAQ's</a>
+                                <Link to="/faq" className="footer-nav-link">FAQ's</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/contact" className="footer-nav-link">Contact Us</a>
+                                <Link to="/privacy" className="footer-nav-link">Privacy Policy</Link>
+                            </li>
+                            <li className="footer-nav-item">
+                                <Link to="/cookies" className="footer-nav-link">Cookies Policy</Link>
+                            </li>
+                            <li className="footer-nav-item">
+                                <Link to="/contact" className="footer-nav-link">Contact Us</Link>
                             </li>
                         </ul>
                     </div>
@@ -51,16 +61,16 @@ const Footer = () => {
                         <h4 className="footer-nav-title">Events</h4>
                         <ul className="footer-nav-list">
                             <li className="footer-nav-item">
-                                <a href="/browse" className="footer-nav-link">Browse Events</a>
+                                <Link to="/dashboard" className="footer-nav-link">Browse Events</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/popular" className="footer-nav-link">Popular Events</a>
+                                <Link to="/dashboard" className="footer-nav-link">Popular Events</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/categories" className="footer-nav-link">Categories</a>
+                                <a href="#" className="footer-nav-link">Categories</a>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/calendar" className="footer-nav-link">Calendar</a>
+                                <a href="#" className="footer-nav-link">Calendar</a>
                             </li>
                         </ul>
                     </div>
@@ -69,16 +79,17 @@ const Footer = () => {
                         <h4 className="footer-nav-title">Organizers</h4>
                         <ul className="footer-nav-list">
                             <li className="footer-nav-item">
-                                <a href="/create" className="footer-nav-link">Create Event</a>
+                                <Link to="admin-dashboard" className="footer-nav-link">Create Event</Link>
+                            </li>
+
+                            <li className="footer-nav-item">
+                                <Link to="/dashboard" className="footer-nav-link">Dashboard</Link>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/dashboard" className="footer-nav-link">Dashboard</a>
+                                <a href="#" className="footer-nav-link">Pricing</a>
                             </li>
                             <li className="footer-nav-item">
-                                <a href="/pricing" className="footer-nav-link">Pricing</a>
-                            </li>
-                            <li className="footer-nav-item">
-                                <a href="/resources" className="footer-nav-link">Resources</a>
+                                <a href="#" className="footer-nav-link">Resources</a>
                             </li>
                         </ul>
                     </div>
@@ -87,31 +98,31 @@ const Footer = () => {
 
             <div className="footer-bottom-bar">
                 <div className="footer-social-links">
-                    <a href="#facebook" aria-label="Facebook">
+                    <a href="https://www.facebook.com/profile.php?id=61553001491901&mibextid=rS40aB7S9Ucbxw6v" aria-label="Facebook">
                         <span className="social-icon">ⓕ</span>
                     </a>
-                    <a href="#twitter" aria-label="Twitter">
+                    <a href="https://x.com/Webinfinity001" aria-label="Twitter">
                         <span className="social-icon">✖</span>
                     </a>
-                    <a href="#instagram" aria-label="Instagram">
+                    <a href="https://www.instagram.com/eazy_build_/" aria-label="Instagram">
                         <span className="social-icon">ⓘ</span>
                     </a>
                 </div>
 
                 <div className="footer-legal-links">
                     <span>© 2025 EventNex. All Rights Reserved</span>
-                    <a href="/privacy-policy" className="legal-link">
+                    <Link to="/privacy" className="legal-link">
                         Privacy Policy
-                    </a>
-                    <a href="/terms-of-service" className="legal-link">
+                    </Link>
+                    <Link to="/terms" className="legal-link">
                         Terms Of Service
-                    </a>
-                    <a href="/cookie-policy" className="legal-link">
+                    </Link>
+                    <Link to="/cookies" className="legal-link">
                         Cookie Policy
-                    </a>
+                    </Link>
                 </div>
             </div>
-        </footer>
+        </footer >
     );
 };
 

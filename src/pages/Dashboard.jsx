@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import UserDashboardNavbar from '../components/UserDashboardNavbar'
-import MainFooter from '../components/MainFooter'
 import './Dashboard.css'
+import Navbar from '../components/UserNavbar';
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
+  const [events, setEvents] = useState([])
+  const [loadingEvents, setLoadingEvents] = useState(false)
 
   const navigate = useNavigate();
 
@@ -22,8 +23,13 @@ const Dashboard = () => {
       headers: { "authorization": token }
     })
 
-      .then(res => {
-        const storedUser = localStorage.getItem("user")
+      .then(() => {
+        const storedUser = localStorage.getItem("userData")
+        if (!storedUser) {
+          navigate('/signin');
+          return
+        }
+
         setUser(JSON.parse(storedUser))
 
         // const timer = setTimeout(() => {
@@ -36,12 +42,31 @@ const Dashboard = () => {
         // return () => clearTimeout(timer)
 
       }).catch(err => {
-        console.log("Session expired!");
-        localStorage.removeItem('user');
+        console.log("Session expired!", err);
+        localStorage.removeItem('userData');
         localStorage.removeItem('User token');
         navigate("/signin");
       });
   }, [navigate]);
+
+  const fetchEvents = async () => {
+    setLoadingEvents(true)
+    try {
+      const res = await axios.get('http://localhost:3000/user/events')
+      if (res.data && res.data.success) setEvents(res.data.events || [])
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoadingEvents(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!user) return
+    fetchEvents()
+    const id = setInterval(() => fetchEvents(), 600000)
+    return () => clearInterval(id)
+  }, [user])
 
   if (!user) {
     return null
@@ -49,7 +74,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <UserDashboardNavbar />
+      <Navbar />
       <div className="dashboard-container">
         <section className="welcome-section">
           <div className="welcome-content">
@@ -69,28 +94,28 @@ const Dashboard = () => {
               <div className="stat-icon">📅</div>
               <div className="stat-content">
                 <h3>Upcoming Events</h3>
-                <p className="stat-number">5</p>
+                <p className="stat-number">{events ? events.filter(e => e.status !== 'completed').length : 0}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">✓</div>
               <div className="stat-content">
                 <h3>Completed</h3>
-                <p className="stat-number">12</p>
+                <p className="stat-number">{events ? events.filter(e => e.status === 'completed').length : 0}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">⭐</div>
               <div className="stat-content">
                 <h3>Interested</h3>
-                <p className="stat-number">8</p>
+                <p className="stat-number">{events ? events.reduce((s, e) => s + (e.interested ? e.interested.length : 0), 0) : 0}</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon">👥</div>
               <div className="stat-content">
                 <h3>Attendees</h3>
-                <p className="stat-number">156</p>
+                <p className="stat-number">{events ? events.reduce((s, e) => s + (e.attendees ? e.attendees.length : 0), 0) : 0}</p>
               </div>
             </div>
           </div>
@@ -98,52 +123,70 @@ const Dashboard = () => {
 
         <section className="events-section">
           <div className="section-header">
-            <h2>Your Upcoming Events</h2>
-            <a href="#" className="view-all">View All →</a>
+            <h2>Available Events</h2>
+            <div className="header-actions">
+              <button className="btn btn-secondary-actionFetch" onClick={fetchEvents} disabled={loadingEvents}>
+                {loadingEvents ? 'Refreshing...' : 'Refresh'}
+              </button>
+              <a href="#" className="view-all">View All →</a>
+            </div>
           </div>
 
           <div className="events-grid">
-            <div className="event-card">
-              <div className="event-date">
-                <span className="event-month">Mar</span>
-                <span className="event-day">15</span>
-              </div>
-              <div className="event-details">
-                <h3>Tech Conference 2026</h3>
-                <p className="event-category">🏢 Conference</p>
-                <p className="event-info"><span className="info-icon">📍</span> New York, NY</p>
-                <p className="event-info"><span className="info-icon">👥</span> 234 Attendees</p>
-                <button className="btn btn-event-action">View Details</button>
-              </div>
-            </div>
+            {loadingEvents ? (
+              <div>Loading events...</div>
+            ) : events.length ? (
+              events.map((ev) => {
+                const booked = ev.attendees && ev.attendees.some(a => a.userId && String(a.userId) === String(user.id))
+                const date = ev.date ? new Date(ev.date) : null
+                return (
+                  <div className="event-card" key={ev._id}>
+                    <div className="event-date">
+                      <span className="event-month">{date ? date.toLocaleString('default', { month: 'short' }) : ''}</span>
+                      <span className="event-day">{date ? date.getDate() : ''}</span>
+                    </div>
+                    <div className="event-details">
+                      <h3>{ev.title}</h3>
+                      <p className="event-category">{ev.status === 'completed' ? 'Event concluded ✅' : 'An Upcoming Event 🚀'}</p>
+                      <p className="event-info"><span className="info-icon">📍</span> {ev.location}</p>
+                      <p className="event-info"><span className="info-icon">👥</span> {ev.attendees ? ev.attendees.length : 0} Attendees</p>
+                      <p className="event-info"><span className="info-icon">💬</span> {ev.interested ? ev.interested.length : 0} Interested</p>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        {booked ? (
+                          <button className="btn btn-event-action" onClick={async () => {
+                            const token = localStorage.getItem('User token')
+                            try {
+                              await axios.post(`http://localhost:3000/user/events/${ev._id}/cancel`, {}, { headers: { authorization: token } })
+                              setEvents(prev => prev.map(p => p._id === ev._id ? { ...p, attendees: p.attendees.filter(a => String(a.userId) !== String(user.id)) } : p))
+                            } catch (err) { console.error(err) }
+                          }}>Cancel</button>
+                        ) : (
+                          <button className="btn btn-event-action" onClick={async () => {
+                            const token = localStorage.getItem('User token')
+                            try {
+                              const res = await axios.post(`http://localhost:3000/user/events/${ev._id}/book`, {}, { headers: { authorization: token } })
+                              if (res.data.success) {
+                                setEvents(prev => prev.map(p => p._id === ev._id ? res.data.event : p))
+                              }
+                            } catch (err) { console.error(err) }
+                          }}>Book / Attend</button>
+                        )}
 
-            <div className="event-card">
-              <div className="event-date">
-                <span className="event-month">Mar</span>
-                <span className="event-day">22</span>
-              </div>
-              <div className="event-details">
-                <h3>Design Workshop</h3>
-                <p className="event-category">🎨 Workshop</p>
-                <p className="event-info"><span className="info-icon">📍</span> San Francisco, CA</p>
-                <p className="event-info"><span className="info-icon">👥</span> 48 Attendees</p>
-                <button className="btn btn-event-action">View Details</button>
-              </div>
-            </div>
-
-            <div className="event-card">
-              <div className="event-date">
-                <span className="event-month">Apr</span>
-                <span className="event-day">05</span>
-              </div>
-              <div className="event-details">
-                <h3>Networking Mixer</h3>
-                <p className="event-category">🤝 Networking</p>
-                <p className="event-info"><span className="info-icon">📍</span> Los Angeles, CA</p>
-                <p className="event-info"><span className="info-icon">👥</span> 156 Attendees</p>
-                <button className="btn btn-event-action">View Details</button>
-              </div>
-            </div>
+                        <button className="btn btn-event-action" onClick={async () => {
+                          const token = localStorage.getItem('User token')
+                          try {
+                            const res = await axios.post(`http://localhost:3000/user/events/${ev._id}/interest`, {}, { headers: { authorization: token } })
+                            if (res.data.success) setEvents(prev => prev.map(p => p._id === ev._id ? res.data.event : p))
+                          } catch (err) { console.error(err) }
+                        }}>{ev.interested && ev.interested.some(a => String(a.userId) === String(user.id)) ? 'Uninterest' : 'Interested'}</button>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            ) : (
+              <div>No events available.</div>
+            )}
           </div>
         </section>
 
@@ -159,7 +202,6 @@ const Dashboard = () => {
           </div>
         </section>
       </div>
-      <MainFooter />
     </>
   )
 }

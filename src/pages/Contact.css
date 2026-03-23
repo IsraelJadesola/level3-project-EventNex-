@@ -1,0 +1,119 @@
+/* Hero background */
+.contact-hero{
+  /* keep a subtle decorative hero but use light surface so text can be dark */
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  padding-bottom: 2.5rem;
+  color: #071428; /* dark text for readability */
+}
+
+.contact-card{
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  max-width: 980px;
+  margin: 0.2rem auto;
+  transform: translateY(-96px); /* much stronger tuck under navbar */
+  animation: slideUp .6s ease both;
+  box-shadow: 0 12px 28px rgba(16,24,40,0.06);
+  position: relative;
+  z-index: 60;
+  border: 1px solid rgba(2,6,23,0.06);
+}
+
+.contact-title{
+  font-weight:700;
+  font-size:1.7rem;
+  color:#071428;
+}
+
+.brand-row{ display:flex; gap:0.75rem; align-items:center }
+.contact-logo{ width:42px; height:42px; object-fit:contain; border-radius:8px }
+
+.contact-sub{
+  margin-bottom:1rem;
+  color: rgba(7,20,40,0.76);
+}
+
+.contact-grid{ display:flex; gap:1.25rem; align-items:flex-start; }
+.contact-left{ flex:1 1 60%; }
+.contact-info{ flex:0 0 35%; color: rgba(7,20,40,0.85); }
+
+.contact-form .form-control{
+  border-radius:10px;
+  border:1px solid rgba(2,6,23,0.06);
+  background: #ffffff;
+  color: #071428;
+  padding:0.75rem 0.9rem;
+  transition:box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.contact-form .form-control:focus{
+  border-color:#6B5BFF;
+  box-shadow:0 8px 20px rgba(107,91,255,0.10);
+  outline: none;
+  background: #ffffff;
+}
+
+.btn-gradient{
+  background: linear-gradient(90deg,#6B5BFF,#4FA3FF);
+  border: none;
+  color: #071428;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  font-weight:700;
+  box-shadow: 0 18px 46px rgba(79,163,255,0.16);
+}
+
+.btn-gradient:hover{ 
+  transform: translateY(-2px);
+}
+
+.alert{ border-radius:10px; padding:0.65rem 0.9rem; font-size:0.95rem }
+.alert-success{ background: linear-gradient(90deg,#e6fbf6,#eefbf8); color:#075a46; border:1px solid rgba(79,163,255,0.06) }
+.alert-danger{ background: linear-gradient(90deg,#fff1f3,#fff7f7); color:#7a1f2f; border:1px solid rgba(255,99,132,0.07) }
+
+.info-title{ font-weight:700; margin-bottom:0.75rem; color: rgba(7,20,40,0.9) }
+.info-list{ list-style:none; padding:0; margin:0 0 1rem 0 }
+.info-list li{ display:flex; gap:0.75rem; align-items:flex-start; margin-bottom:0.9rem }
+.info-key{ font-size:0.9rem; color: rgba(7,20,40,0.7); font-weight:600 }
+.info-val{ display:block; color: rgba(7,20,40,0.85); text-decoration:none }
+.info-val:hover{ text-decoration:underline }
+
+.socials{ margin-top:1rem }
+.social-icons{ display:flex; gap:0.75rem; margin-top:0.6rem }
+.social-link{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:12px; background:rgba(255,255,255,0.045); box-shadow:0 10px 26px rgba(2,8,23,0.32); transition:transform .14s ease, box-shadow .14s ease, opacity .12s ease }
+.social-link:hover{ transform:translateY(-4px) scale(1.05); box-shadow:0 30px 72px rgba(2,8,23,0.46); opacity:1 }
+
+/* Ensure SVG strokes use the link color so icons are visible on dark backgrounds */
+.social-link svg{ width:32px; height:32px; display:block }
+.social-link svg path, .social-link svg rect, .social-link svg circle {
+  stroke: none !important;
+  stroke-width: 0 !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Make icons fully filled and high-contrast so they're clearly visible */
+.social-link.twitter svg path, .social-link.facebook svg path, .social-link.instagram svg rect, .social-link.linkedin svg path { fill: currentColor !important; opacity:1 !important }
+
+/* Platform colors */
+.social-link.twitter{ color:#1DA1F2; background: linear-gradient(180deg, rgba(29,161,242,0.12), rgba(29,161,242,0.03)); }
+.social-link.facebook{ color:#1877F2; background: linear-gradient(180deg, rgba(24,119,242,0.12), rgba(24,119,242,0.03)); }
+.social-link.instagram{ color: rgba(255, 0, 0, 0.664); background: linear-gradient(90deg, rgba(225,48,108,0.2), rgba(255,180,120,0.04)); }
+.social-link.linkedin{ color:#0A66C2; background: linear-gradient(180deg, rgba(10,102,194,0.12), rgba(10,102,194,0.03)); }
+
+.social-link:active{ transform:translateY(-1px) }
+
+@keyframes slideUp{
+  from{ opacity:0; transform:translateY(28px) }
+  to{ opacity:1; transform:translateY(0) }
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .contact-grid{ flex-direction:column }
+  .contact-info{ order:2 }
+  .contact-left{ order:1 }
+  .contact-card{ padding:1rem }
+}
+

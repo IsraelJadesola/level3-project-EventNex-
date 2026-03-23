@@ -1,10 +1,11 @@
 .navbar.navbar-landing {
-  background-color: rgba(18, 38, 65, 0.9) !important;
+  background-color: black !important;
   backdrop-filter: blur(10px);
   z-index: 1050 !important;
-  padding: 1.2rem 0;
+  padding: 1.8rem 0;
   transition: all 0.3s ease;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-bottom:0.0001em solid #d19d50;
 }
 
 .navbar-scrolled {
@@ -16,6 +17,7 @@
 
 .navbar-brand {
   padding-left: 1rem;
+  margin-right: auto;
 }
 
 .navbar-brand img {
@@ -29,23 +31,30 @@
 }
 
 .navbar-nav {
-  gap: 0.8rem;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  white-space: nowrap;
 }
 
 .nav-link {
   color: white !important;
   font-weight: 500;
-  padding: 0.6rem 1.5rem !important;
+  padding: 0.6rem 1.2rem !important;
   transition: all 0.3s ease;
   border-radius: 8px;
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.3px;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .nav-link:hover {
   color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
 }
 
 .nav-link.active {
@@ -54,60 +63,158 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar .d-flex {
-  gap: 1rem;
+.navbar-collapse {
+  padding-right: 1rem;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 0;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-buttons {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  padding-right: 1rem;
+  padding-left: 0.5rem;
+}
+
+.creator-buttons {
+  padding-left: 1rem;
+  padding-right: 0.5rem;
 }
 
 .btn-login {
   background-color: transparent !important;
-  border-color: #d19d50 !important;
+  border: 1px solid #122641 !important;
   color: white !important;
   font-weight: 600;
-  padding: 0.6rem 2rem !important;
+  padding: 0.5rem 1.3rem !important;
   border-radius: 8px;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.5px;
   text-transform: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
 }
 
 .btn-login:hover {
   background-color: #d19d50 !important;
-  border-color: #122641 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 200, 83, 0.3);
+  border-color: #d19d50 !important;
+  box-shadow: 0 6px 20px rgba(209, 157, 80, 0.3);
   color: white !important;
 }
 
 .btn-signup {
   background-color: #122641 !important;
+  border: 2px solid #122641 !important;
   color: white !important;
   font-weight: 600;
-  padding: 0.6rem 2rem !important;
+  padding: 0.5rem 1.3rem !important;
   border-radius: 8px;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.5px;
   text-transform: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
 }
 
 .btn-signup:hover {
   background-color: rgba(255, 255, 255, 0.9) !important;
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+  color: black !important;
+}
+
+.btn-creator-signup {
+  background-color: transparent !important;
+  border: 2px solid #d19d50 !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0.5rem 1.3rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-creator-signup:hover {
+  background-color: #bd8100 !important;
+  border-color: #ffff !important;
+  box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+  color: white !important;
+}
+
+.btn-creator-login {
+  background-color: #122641 !important;
+  border: 2px solid #ffffff !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0.5rem 1.3rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-creator-login:hover {
+  background-color: #ffff !important;
+  border-color: #6f42c1 !important;
+  box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
   color: black !important;
 }
 
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.4) !important;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   padding: 0.4rem 0.7rem;
   background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.navbar-toggler:not(.collapsed) {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .navbar-toggler-icon {
@@ -116,14 +223,9 @@
   height: 1.3em;
 }
 
-.collapse.navbar-collapse {
-  padding-right: 1rem;
-}
-
 @media (max-width: 991.98px) {
-  .navbar {
-    background-color: rgba(0, 0, 0, 0.95) !important;
-    backdrop-filter: blur(15px);
+  .navbar.navbar-landing {
+    padding: 0.8rem 0;
   }
 
   .navbar-nav {
@@ -133,32 +235,121 @@
   }
 
   .nav-link {
-    padding: 0.8rem 1rem !important;
+    padding: 0.7rem 1rem !important;
     margin: 0.3rem 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
-  .navbar .d-flex {
+  .navbar-collapse {
+    padding-right: 0;
+  }
+
+  .auth-buttons {
     flex-direction: column;
     width: 100%;
     padding: 1rem 0;
-    gap: 0.8rem;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+    border: none !important;
+    padding: 0.5rem 0 !important;
+    gap: 0.5rem;
+  }
+
+  .user-buttons {
+    border-right: none !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .creator-buttons {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
   }
 
   .btn-login,
-  .btn-signup {
+  .btn-signup,
+  .btn-creator-signup,
+  .btn-creator-login {
     width: 100%;
     max-width: 250px;
-    margin: 0.3rem auto;
-    padding: 0.8rem 1.5rem !important;
+    margin: 0 auto;
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.95rem !important;
   }
 
   .navbar-brand {
+    margin-right: 0;
     padding-left: 0.5rem;
   }
 
   .navbar-brand img {
     height: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-nav {
+    flex: 1;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .nav-link {
+    padding: 0.6rem 1.2rem !important;
+    font-size: 1rem;
+  }
+
+  .auth-buttons {
+    margin-left: auto;
+  }
+
+  .btn-login,
+  .btn-signup,
+  .btn-creator-signup,
+  .btn-creator-login {
+    padding: 0.55rem 1.2rem !important;
+    font-size: 0.92rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-link {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 1.05rem;
+  }
+
+  .btn-login,
+  .btn-signup {
+    padding: 0.6rem 1.8rem !important;
+    font-size: 1rem;
+  }
+
+  .btn-creator-signup,
+  .btn-creator-login {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.95rem;
+  }
+
+  .button-group {
+    gap: 0.6rem;
+  }
+
+  .user-buttons {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    padding-right: 1rem;
+    padding-left: 0;
+  }
+
+  .creator-buttons {
+    padding-left: 1rem;
+    padding-right: 0;
   }
 }
 
@@ -170,10 +361,31 @@
 
   .nav-link {
     padding: 0.6rem 1.8rem !important;
+    font-size: 1.05rem;
   }
 
   .btn-login,
   .btn-signup {
-    padding: 0.6rem 2.5rem !important;
+    padding: 0.6rem 2rem !important;
+    font-size: 1rem;
+  }
+
+  .btn-creator-signup,
+  .btn-creator-login {
+    padding: 0.6rem 1.8rem !important;
+    font-size: 0.95rem;
+  }
+
+  .button-group {
+    gap: 0.7rem;
+  }
+
+  .user-buttons {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    padding-right: 1.2rem;
+  }
+
+  .creator-buttons {
+    padding-left: 1.2rem;
   }
 }

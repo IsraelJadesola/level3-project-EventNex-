@@ -23,17 +23,15 @@ const SignInForm = () => {
 
         axios.post("http://localhost:3000/user/signin", userData)
             .then((res) => {
-                console.log('Response:', res.data)
-                console.log("All response properties", Object.keys(res.data))
 
                 if (res.data.token) {
                     localStorage.setItem("User token", res.data.token)
                 } else {
-                    console.warn("No token found in response. Response:", res.data)
+                    console.warn("No token found")
                 }
 
                 if (res.data.user && !res.data.error) {
-                    localStorage.setItem("user", JSON.stringify(res.data.user));
+                    localStorage.setItem("userData", JSON.stringify(res.data.user));
                 }
 
                 alert('signin successfully!');
