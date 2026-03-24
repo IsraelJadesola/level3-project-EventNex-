@@ -19,7 +19,7 @@ function exportAttendeesCSV(event) {
   URL.revokeObjectURL(url)
 }
 
-const API_BASE = 'http://localhost:3000/admin'
+const API_BASE = 'https://level3-project-backend.vercel.app/admin'
 
 const AdminDashboard = () => {
   const [events, setEvents] = useState([])

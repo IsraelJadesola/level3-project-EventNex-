@@ -24,7 +24,7 @@ const Contact = () => {
 
         setSending(true)
         try {
-            const res = await axios.post('http://localhost:3000/user/contact', { name, email, message })
+            const res = await axios.post('https://level3-project-backend.vercel.app/user/contact', { name, email, message })
             setSuccess(res.data && res.data.message ? res.data.message : 'Message sent')
             setName('')
             setEmail('')

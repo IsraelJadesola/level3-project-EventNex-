@@ -99,7 +99,7 @@ const Careers = () => {
 
         setApplying(true)
         try {
-            const res = await axios.post('http://localhost:3000/user/apply-job', {
+            const res = await axios.post('https://level3-project-backend.vercel.app/user/apply-job', {
                 jobTitle: selectedJob.title,
                 jobId: selectedJob.id,
                 name: formData.name.trim(),

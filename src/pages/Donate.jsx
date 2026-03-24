@@ -51,7 +51,7 @@ const Donate = () => {
 
         setLoading(true)
         try {
-            const res = await axios.post('http://localhost:3000/user/donate', {
+            const res = await axios.post('https://level3-project-backend.vercel.app/user/donate', {
                 name: name.trim(),
                 email: email.trim(),
                 amount: parseInt(amount),

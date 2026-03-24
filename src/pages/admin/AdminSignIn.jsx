@@ -28,7 +28,7 @@ const AdminSignIn = () => {
 
         try {
             const adminData = { email, password };
-            const res = await axios.post('http://localhost:3000/admin/signin', adminData);
+            const res = await axios.post('https://level3-project-backend.vercel.app/admin/signin', adminData);
 
             localStorage.setItem('adminToken', res.data.token);
             if (res.data.admin && res.data.admin.id) localStorage.setItem('adminId', res.data.admin.id);

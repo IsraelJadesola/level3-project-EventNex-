@@ -19,7 +19,7 @@ const Dashboard = () => {
       return
     }
 
-    axios.get("http://localhost:3000/user/dashboard", {
+    axios.get("https://level3-project-backend.vercel.app/user/dashboard", {
       headers: { "authorization": token }
     })
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
   const fetchEvents = async () => {
     setLoadingEvents(true)
     try {
-      const res = await axios.get('http://localhost:3000/user/events')
+      const res = await axios.get('https://level3-project-backend.vercel.app/user/events')
       if (res.data && res.data.success) setEvents(res.data.events || [])
     } catch (err) {
       console.error(err)
@@ -156,7 +156,7 @@ const Dashboard = () => {
                           <button className="btn btn-event-action" onClick={async () => {
                             const token = localStorage.getItem('User token')
                             try {
-                              await axios.post(`http://localhost:3000/user/events/${ev._id}/cancel`, {}, { headers: { authorization: token } })
+                              await axios.post(`https://level3-project-backend.vercel.app/user/events/${ev._id}/cancel`, {}, { headers: { authorization: token } })
                               setEvents(prev => prev.map(p => p._id === ev._id ? { ...p, attendees: p.attendees.filter(a => String(a.userId) !== String(user.id)) } : p))
                             } catch (err) { console.error(err) }
                           }}>Cancel</button>
@@ -164,7 +164,7 @@ const Dashboard = () => {
                           <button className="btn btn-event-action" onClick={async () => {
                             const token = localStorage.getItem('User token')
                             try {
-                              const res = await axios.post(`http://localhost:3000/user/events/${ev._id}/book`, {}, { headers: { authorization: token } })
+                              const res = await axios.post(`https://level3-project-backend.vercel.app/user/events/${ev._id}/book`, {}, { headers: { authorization: token } })
                               if (res.data.success) {
                                 setEvents(prev => prev.map(p => p._id === ev._id ? res.data.event : p))
                               }
@@ -175,7 +175,7 @@ const Dashboard = () => {
                         <button className="btn btn-event-action" onClick={async () => {
                           const token = localStorage.getItem('User token')
                           try {
-                            const res = await axios.post(`http://localhost:3000/user/events/${ev._id}/interest`, {}, { headers: { authorization: token } })
+                            const res = await axios.post(`https://level3-project-backend.vercel.app/user/events/${ev._id}/interest`, {}, { headers: { authorization: token } })
                             if (res.data.success) setEvents(prev => prev.map(p => p._id === ev._id ? res.data.event : p))
                           } catch (err) { console.error(err) }
                         }}>{ev.interested && ev.interested.some(a => String(a.userId) === String(user.id)) ? 'Uninterest' : 'Interested'}</button>

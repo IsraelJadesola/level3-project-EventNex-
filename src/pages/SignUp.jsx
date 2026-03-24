@@ -21,7 +21,7 @@ const SignUpForm = () => {
         e.preventDefault();
         let userData = { firstName, lastName, email, password }
 
-        axios.post("http://localhost:3000/user/signup", userData)
+        axios.post("https://level3-project-backend.vercel.app/user/signup", userData)
             .then(() => {
                 alert('signup successfully! please login');
                 navigate("/signin")

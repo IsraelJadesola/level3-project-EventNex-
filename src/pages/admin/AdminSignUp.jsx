@@ -34,7 +34,7 @@ const AdminSignUp = () => {
         try {
             setIsLoading(true);
             const adminData = { firstName, lastName, email, password };
-            const res = await axios.post('http://localhost:3000/admin/signup', adminData);
+            const res = await axios.post('https://level3-project-backend.vercel.app/admin/signup', adminData);
 
             alert('Admin account created successfully! Please sign in.');
             navigate('/admin-signin');
