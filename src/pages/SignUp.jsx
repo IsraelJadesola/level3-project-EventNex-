@@ -24,7 +24,6 @@ const SignUpForm = () => {
                 alert('signup successfully! please login');
                 navigate("/signin")
             }).catch((err) => {
-                // console.log('Error:', err.response ? err.response.data : err)
                 alert(`Signup failed: ${err.response ? err.response.data : 'An unknown error occurred.'}`)
             })
     }
