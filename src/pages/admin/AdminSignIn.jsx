@@ -3,7 +3,7 @@ import '../css/SignUp-In.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 const AdminSignIn = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ const AdminSignIn = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +38,7 @@ const AdminSignIn = () => {
                 localStorage.setItem('adminName', adminName);
             }
 
-            // Dispatch to Redux if needed
+            // Dispatch to Redux as an upcoming feature
             // dispatch(setAdminInfo(res.data));
 
             alert('Signed in successfully!');

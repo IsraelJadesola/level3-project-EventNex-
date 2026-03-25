@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     if (!token) {
       navigate('/admin-signin')
-      return
+      // return
     }
     const storedName = localStorage.getItem('adminName')
     if (storedName) {
@@ -179,7 +179,6 @@ const AdminDashboard = () => {
       <Navbar />
       <div className="dashboard-root">
         <div className="dashboard-inner">
-          {/* Welcome Header Section */}
           <div className="welcome-header">
             <div className="welcome-content">
               <h1 className="welcome-title">Welcome back, {adminName}! 👋</h1>
@@ -190,7 +189,6 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Enhanced Stats Grid */}
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-icon total">📊</div>
@@ -229,7 +227,6 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Events Management Section */}
           <div className="events-section-header">
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
               <h2 style={{ margin: 0 }}>Your Events</h2>
@@ -292,7 +289,6 @@ const AdminDashboard = () => {
                   </thead>
                   <tbody>
                     {activeEvent.attendees.map((a, i) => {
-                      // Support legacy string attendee entries and the newer object shape
                       const isString = typeof a === 'string'
                       const name = isString ? '-' : (a.name || '')
                       const emailOrId = isString ? a : (a.email || (a.userId ? String(a.userId) : '-'))
