@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     if (!token) {
       navigate('/admin-signin')
-      // return
+      return
     }
     const storedName = localStorage.getItem('adminName')
     if (storedName) {

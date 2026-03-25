@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './css/SignUp-In.css';
 import bigImg from './images/signupimage.jpg'
-import GoogleIcon from './images/google-icon.png';
-import FacebookIcon from './images/facebook-icon.png';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -108,20 +106,6 @@ const SignUpForm = () => {
                                 Sign Up
                             </button>
                         </form>
-
-                        <div className="divider-container">
-                            <div className="divider-line"></div>
-                            <span className="divider-text">OR</span>
-                            <div className="divider-line"></div>
-                        </div>
-
-                        <p className="signup-with-text">Sign Up With</p>
-
-                        <div className="social-login-container">
-                            <button className="social-icon-btn">
-                                <img src={GoogleIcon} alt="Google" className="social-icon-img" />
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
